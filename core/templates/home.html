@@ -8,5 +8,10 @@
 </head>
 <body>
     <h1>hello, you are at Core/home</h1>
+    <ul>
+        {% for pessoa in pessoas %}
+            <li>{{ pessoa.id }}  -  {{ pessoa.nome }}</li>
+        {% endfor %}    
+    </ul>
 </body>
 </html>

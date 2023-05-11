@@ -1,8 +1,10 @@
 from django.urls import path
 
-from . import views
+from .views import home, salvar, editar
 
 urlpatterns = [
-    path('',views.home)
+    path('',home),
+    path('salvar/', salvar, name="salvar")
+    path('editar/<int:id>', editar, name="editar")
 ]
 

@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 
 from .models import Pessoa
 
@@ -16,5 +16,14 @@ def salvar(request):
     return render(request, "home.html", {"pessoas": pessoas})
 
 
-def editar(resquest):
-    pass
+def editar(resquest, id):
+    pessoa = Pessoa.objects.get(id=id)
+    return render(resquest, "update.html", {"pessoa": pessoa})
+
+
+def update(request, id):
+    nome = request.POST.get("nome")
+    pessoa = Pessoa.objects.get(id=id)
+    pessoa.nome = nome
+    pessoa.save()
+    return redirect(home)
